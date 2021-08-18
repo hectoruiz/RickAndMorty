@@ -6,6 +6,7 @@ buildscript {
         google()
         mavenCentral()
     }
+
     dependencies {
         classpath "com.android.tools.build:gradle:$rootProject.gradlePluginVersion"
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$rootProject.kotlinPluginVersion"

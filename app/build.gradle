@@ -27,7 +27,7 @@ android {
         targetCompatibility rootProject.javaVersion
     }
     kotlinOptions {
-        jvmTarget = '1.8'
+        jvmTarget = rootProject.jvmTargetVersion
     }
     buildFeatures {
         viewBinding true
