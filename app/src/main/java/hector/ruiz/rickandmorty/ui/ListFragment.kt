@@ -1,4 +1,4 @@
-package hector.ruiz.rickandmorty
+package hector.ruiz.rickandmorty.ui
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
+import hector.ruiz.rickandmorty.R
 import hector.ruiz.rickandmorty.databinding.ListFragmentBinding
 
 class ListFragment : Fragment() {

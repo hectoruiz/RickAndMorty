@@ -1,9 +1,14 @@
 plugins {
     id 'kotlin'
+    id 'kotlin-kapt'
 }
 
 dependencies {
 
     implementation project(':domain')
     implementation project(':usecase')
+
+    // Dagger Hilt
+    implementation "com.google.dagger:hilt-android:$rootProject.daggerHiltVersion"
+    kapt "com.google.dagger:hilt-android-compiler:$rootProject.daggerHiltVersion"
 }

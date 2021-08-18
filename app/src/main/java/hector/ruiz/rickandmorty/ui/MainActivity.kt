@@ -1,4 +1,4 @@
-package hector.ruiz.rickandmorty
+package hector.ruiz.rickandmorty.ui
 
 import android.os.Bundle
 import com.google.android.material.snackbar.Snackbar
@@ -9,6 +9,7 @@ import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
+import hector.ruiz.rickandmorty.R
 import hector.ruiz.rickandmorty.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
