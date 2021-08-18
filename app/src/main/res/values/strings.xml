@@ -1,3 +1,12 @@
 <resources>
+
     <string name="app_name">Rick and Morty</string>
+
+    <!-- Strings used for fragments for navigation -->
+    <string name="list_fragment_label">List Fragment</string>
+    <string name="detail_fragment_label">Detail Fragment</string>
+    <string name="next">Next</string>
+    <string name="hello_list_fragment">Hello list fragment</string>
+    <string name="hello_detail_fragment">Hello detail fragment</string>
+
 </resources>

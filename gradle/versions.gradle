@@ -19,9 +19,11 @@ ext {
     coreKtxVersion = "1.6.0"
     appCompatVersion = "1.3.1"
     materialVersion = "1.4.0"
+    constraintLayoutVersion = "2.1.0"
+    navigationVersion = "2.3.5"
 
     // Testing Libraries
     junitVersion = "4.13.2"
-    testJunitVersion = "1.3.1"
+    testJunitVersion = "1.1.2"
     espressoVersion = "3.4.0"
 }
