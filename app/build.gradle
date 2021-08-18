@@ -24,19 +24,24 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+
     compileOptions {
         sourceCompatibility rootProject.javaVersion
         targetCompatibility rootProject.javaVersion
     }
+
     kotlinOptions {
         jvmTarget = rootProject.jvmTargetVersion
     }
+
     buildFeatures {
         viewBinding true
     }
 }
 
 dependencies {
+
+    implementation project(':datasource')
 
     // Android Libraries
     implementation "androidx.core:core-ktx:$rootProject.coreKtxVersion"
@@ -45,6 +50,10 @@ dependencies {
     implementation "androidx.constraintlayout:constraintlayout:$rootProject.constraintLayoutVersion"
     implementation "androidx.navigation:navigation-fragment-ktx:$rootProject.navigationVersion"
     implementation "androidx.navigation:navigation-ui-ktx:$rootProject.navigationVersion"
+
+    // Retrofit
+    implementation "com.squareup.retrofit2:retrofit:$rootProject.retrofitVersion"
+    implementation "com.squareup.retrofit2:converter-moshi:$rootProject.retrofitVersion"
 
     // Dagger Hilt
     implementation "com.google.dagger:hilt-android:$rootProject.daggerHiltVersion"
