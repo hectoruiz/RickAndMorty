@@ -9,6 +9,6 @@ dependencies {
     implementation project(':usecase')
 
     // Dagger Hilt
-    implementation "com.google.dagger:hilt-android:$rootProject.daggerHiltVersion"
+    implementation "com.google.dagger:hilt-core:$rootProject.daggerHiltVersion"
     kapt "com.google.dagger:hilt-android-compiler:$rootProject.daggerHiltVersion"
 }
