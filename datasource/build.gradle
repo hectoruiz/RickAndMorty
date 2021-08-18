@@ -24,6 +24,7 @@ android {
 dependencies {
 
     implementation project(':data')
+    implementation project(':domain')
 
     // Android Libraries
     implementation "androidx.core:core-ktx:$rootProject.coreKtxVersion"
