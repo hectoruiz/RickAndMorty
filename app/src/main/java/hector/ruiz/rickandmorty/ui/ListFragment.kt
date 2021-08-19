@@ -2,25 +2,26 @@ package hector.ruiz.rickandmorty.ui
 
 import android.os.Bundle
 import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import dagger.hilt.android.AndroidEntryPoint
 import hector.ruiz.rickandmorty.R
-import hector.ruiz.rickandmorty.databinding.ListFragmentBinding
+import hector.ruiz.rickandmorty.databinding.CharacterListBinding
 import hector.ruiz.usecase.usecases.GetCharactersUseCase
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.launch
+import kotlinx.coroutines.runBlocking
 import javax.inject.Inject
 
 @AndroidEntryPoint
 class ListFragment : Fragment() {
 
-    private var _binding: ListFragmentBinding? = null
+    private var _binding: CharacterListBinding? = null
+    private lateinit var characterAdapter: CharacterAdapter
 
-    @Inject lateinit var getCharactersUseCase: GetCharactersUseCase
+    @Inject
+    lateinit var getCharactersUseCase: GetCharactersUseCase
 
     // This property is only valid between onCreateView and
     // onDestroyView.
@@ -30,21 +31,23 @@ class ListFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        _binding = ListFragmentBinding.inflate(inflater, container, false)
+        _binding = CharacterListBinding.inflate(inflater, container, false)
         return binding?.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding?.buttonNext?.setOnClickListener {
-            // Testing the api call
-            GlobalScope.launch {
-                getCharactersUseCase.getCharacters(null).data?.results?.forEach {
-                    it?.name?.let { name ->
-                        Log.d("NAME", name)
-                    }
-                }
+        // Testing the api call and populate the data in the recyclerview
+        runBlocking {
+            getCharactersUseCase.getCharacters(null).data?.results?.let {
+                characterAdapter = CharacterAdapter(it)
+            }
+        }
+        binding?.charactersList?.adapter = characterAdapter
+        characterAdapter.onItemClick = {
+            it?.let {
+                Log.d("LOCATION_URL", it)
             }
             findNavController().navigate(R.id.action_ListFragment_to_DetailFragment)
         }

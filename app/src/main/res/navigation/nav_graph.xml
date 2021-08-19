@@ -8,8 +8,7 @@
     <fragment
         android:id="@+id/ListFragment"
         android:name="hector.ruiz.rickandmorty.ui.ListFragment"
-        android:label="@string/list_fragment_label"
-        tools:layout="@layout/list_fragment">
+        tools:layout="@layout/character_list">
 
         <action
             android:id="@+id/action_ListFragment_to_DetailFragment"
@@ -19,7 +18,6 @@
     <fragment
         android:id="@+id/DetailFragment"
         android:name="hector.ruiz.rickandmorty.ui.DetailFragment"
-        android:label="@string/detail_fragment_label"
         tools:layout="@layout/detail_fragment">
 
         <action
