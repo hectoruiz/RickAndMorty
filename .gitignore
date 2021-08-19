@@ -12,3 +12,4 @@ local.properties
 /usecase/build
 /data/build
 /datasource/build
+/commons/build

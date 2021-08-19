@@ -41,7 +41,11 @@ android {
 
 dependencies {
 
+    implementation project(':usecase')
+    implementation project(':data')
     implementation project(':datasource')
+    implementation project(':domain')
+    implementation project(':commons')
 
     // Android Libraries
     implementation "androidx.core:core-ktx:$rootProject.coreKtxVersion"

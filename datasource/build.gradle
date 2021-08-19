@@ -26,6 +26,7 @@ dependencies {
 
     implementation project(':data')
     implementation project(':domain')
+    implementation project(':commons')
 
     // Android Libraries
     implementation "androidx.core:core-ktx:$rootProject.coreKtxVersion"
