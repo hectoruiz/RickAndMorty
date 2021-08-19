@@ -6,9 +6,9 @@ import hector.ruiz.domain.entities.list.Characters
 
 interface CharacterRepository {
 
-    fun getListCharacters(): ResponseResult<Characters>
+    suspend fun getListCharacters(): ResponseResult<Characters>
 
-    fun getPaginatedListCharacters(pageNumber: Int): ResponseResult<Characters>
+    suspend fun getPaginatedListCharacters(pageNumber: Int): ResponseResult<Characters>
 
-    fun getLocation(locationId: Int): ResponseResult<LocationDetails>
+    suspend fun getLocation(locationId: Int): ResponseResult<LocationDetails>
 }

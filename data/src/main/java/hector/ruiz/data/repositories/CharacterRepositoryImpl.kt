@@ -10,15 +10,15 @@ import javax.inject.Inject
 class CharacterRepositoryImpl @Inject constructor(private val networkDataSource: NetworkDataSource) :
     CharacterRepository {
 
-    override fun getListCharacters(): ResponseResult<Characters> {
+    override suspend fun getListCharacters(): ResponseResult<Characters> {
         return networkDataSource.getListCharacters()
     }
 
-    override fun getPaginatedListCharacters(pageNumber: Int): ResponseResult<Characters> {
+    override suspend fun getPaginatedListCharacters(pageNumber: Int): ResponseResult<Characters> {
         return networkDataSource.getPaginatedListCharacters(pageNumber)
     }
 
-    override fun getLocation(locationId: Int): ResponseResult<LocationDetails> {
+    override suspend fun getLocation(locationId: Int): ResponseResult<LocationDetails> {
         return networkDataSource.getLocation(locationId)
     }
 }

@@ -5,7 +5,7 @@ import javax.inject.Inject
 
 class GetFavoriteUseCase @Inject constructor(private val favoriteRepository: FavoriteRepository) {
 
-    fun getFavorite(idCharacter: Int): Boolean {
+    suspend fun getFavorite(idCharacter: Int): Boolean {
         return favoriteRepository.getFavorite(idCharacter)
     }
 }
