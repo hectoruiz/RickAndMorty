@@ -10,11 +10,11 @@ import retrofit2.http.Query
 interface ApiService {
 
     @GET("character")
-    fun getStaticList(): Response<Characters>
+    suspend fun getStaticList(): Response<Characters>
 
     @GET("character/}")
-    fun getPaginatedList(@Query("page") pageNumber: Int): Response<Characters>
+    suspend fun getPaginatedList(@Query("page") pageNumber: Int): Response<Characters>
 
     @GET("location/{location_id}")
-    fun getLocation(@Path("location_id") id: Int): Response<LocationDetails>
+    suspend fun getLocation(@Path("location_id") id: Int): Response<LocationDetails>
 }

@@ -13,7 +13,7 @@ class NetworkDataSourceImpl @Inject constructor(retrofit: Retrofit) : NetworkDat
 
     private val service = retrofit.create<ApiService>()
 
-    override fun getListCharacters(): ResponseResult<Characters> {
+    override suspend fun getListCharacters(): ResponseResult<Characters> {
         return service.getStaticList().let {
             if (it.isSuccessful) {
                 ResponseResult(null, it.body())
@@ -23,7 +23,7 @@ class NetworkDataSourceImpl @Inject constructor(retrofit: Retrofit) : NetworkDat
         }
     }
 
-    override fun getPaginatedListCharacters(pageNumber: Int): ResponseResult<Characters> {
+    override suspend fun getPaginatedListCharacters(pageNumber: Int): ResponseResult<Characters> {
         return service.getPaginatedList(pageNumber).let {
             if (it.isSuccessful) {
                 ResponseResult(null, it.body())
@@ -33,7 +33,7 @@ class NetworkDataSourceImpl @Inject constructor(retrofit: Retrofit) : NetworkDat
         }
     }
 
-    override fun getLocation(locationId: Int): ResponseResult<LocationDetails> {
+    override suspend fun getLocation(locationId: Int): ResponseResult<LocationDetails> {
         return service.getLocation(locationId).let {
             if (it.isSuccessful) {
                 ResponseResult(null, it.body())

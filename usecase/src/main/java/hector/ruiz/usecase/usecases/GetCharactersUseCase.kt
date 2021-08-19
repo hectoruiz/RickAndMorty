@@ -7,7 +7,7 @@ import javax.inject.Inject
 
 class GetCharactersUseCase @Inject constructor(private val characterRepository: CharacterRepository) {
 
-    fun getCharacters(pageNumber: Int?): ResponseResult<Characters> {
+    suspend fun getCharacters(pageNumber: Int?): ResponseResult<Characters> {
         return pageNumber?.let {
             characterRepository.getPaginatedListCharacters(pageNumber)
         } ?: characterRepository.getListCharacters()

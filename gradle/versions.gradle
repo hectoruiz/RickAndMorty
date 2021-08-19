@@ -31,6 +31,9 @@ ext {
     // Dagger Hilt
     daggerHiltVersion = "2.38.1"
 
+    // Coroutines
+    coroutinesVersion = "1.3.9"
+
     // Testing Libraries
     junitVersion = "4.13.2"
     testJunitVersion = "1.1.3"
