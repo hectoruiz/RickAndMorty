@@ -10,16 +10,19 @@ import androidx.core.view.isVisible
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.navArgs
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import dagger.hilt.android.AndroidEntryPoint
 import hector.ruiz.presentation.detail.DetailViewModel
 import hector.ruiz.rickandmorty.R
-import hector.ruiz.rickandmorty.databinding.DetailFragmentBinding
+import hector.ruiz.rickandmorty.databinding.LocationFragmentBinding
 import hector.ruiz.rickandmorty.extensions.snackBarLong
 
 @AndroidEntryPoint
 class DetailFragment : DialogFragment() {
 
-    private var _binding: DetailFragmentBinding? = null
+    private var _binding: LocationFragmentBinding? = null
+    private lateinit var residentAdapter: ResidentAdapter
     private val detailViewModel: DetailViewModel by viewModels()
 
     // This property is only valid between onCreateView and
@@ -31,8 +34,20 @@ class DetailFragment : DialogFragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        _binding = DetailFragmentBinding.inflate(inflater, container, false)
+        _binding = LocationFragmentBinding.inflate(inflater, container, false)
+        initRecyclerView()
         return binding?.root
+    }
+
+    private fun initRecyclerView() {
+        residentAdapter = ResidentAdapter()
+        binding?.residentsList?.layoutManager = GridLayoutManager(
+            context,
+            COLUMNS_NUMBER,
+            RecyclerView.VERTICAL,
+            false
+        )
+        binding?.residentsList?.adapter = residentAdapter
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -45,8 +60,8 @@ class DetailFragment : DialogFragment() {
             binding?.detailsProgress?.isVisible = it
         })
 
-        detailViewModel.locationDetails.observe(viewLifecycleOwner, {
-            it?.let {
+        detailViewModel.locationDetails.observe(viewLifecycleOwner, { locationDetails ->
+            locationDetails?.let {
                 with(binding) {
                     this?.locationName?.text = it.name
                     this?.locationDescription?.text =
@@ -55,9 +70,21 @@ class DetailFragment : DialogFragment() {
                         R.string.location_residents,
                         getQuantityResidents(it.residents?.size)
                     )
-                    this?.locationAllResidents?.visibility = VISIBLE
+                    with(this?.locationAllResidents) {
+                        this?.visibility = VISIBLE
+                        this?.isEnabled = true
+                        this?.setOnClickListener {
+                            detailViewModel.getAllResidents(locationDetails.residents)
+                        }
+                    }
                 }
             }
+        })
+
+        detailViewModel.resident.observe(viewLifecycleOwner, {
+            binding?.locationAllResidents?.isEnabled = false
+            residentAdapter.addResident(it)
+            residentAdapter.notifyItemInserted(residentAdapter.itemCount)
         })
 
         detailViewModel.errorRequest.observe(viewLifecycleOwner, {
@@ -78,5 +105,9 @@ class DetailFragment : DialogFragment() {
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+
+    companion object {
+        private const val COLUMNS_NUMBER = 2
     }
 }
