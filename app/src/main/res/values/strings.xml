@@ -2,10 +2,11 @@
     <!-- App name -->
     <string name="app_name">Rick and Morty</string>
 
-    <!-- Strings used for fragments for navigation -->
-
     <!-- Character list -->
     <string name="error_request">The request could not be done. Try again later.</string>
+    <string name="error_favorite">The petition could not be done. Try again later.</string>
+    <string name="success_add_favorite">Character saved as favorite.</string>
+    <string name="success_remove_favorite">Character removed as favorite.</string>
 
     <!-- Character item -->
     <string name="character_episodes">This character appear in %s</string>
