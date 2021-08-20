@@ -1,4 +1,4 @@
-package hector.ruiz.rickandmorty.ui
+package hector.ruiz.rickandmorty.ui.list
 
 import android.os.Bundle
 import android.util.Log
