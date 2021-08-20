@@ -43,6 +43,8 @@ class ListViewModel @Inject constructor(private val getCharactersUseCase: GetCha
 
     private fun manageError() {
         _isLoading.postValue(false)
-        _errorRequest.postValue(true)
+        if (_characterList.value.isNullOrEmpty()) {
+            _errorRequest.postValue(true)
+        }
     }
 }
