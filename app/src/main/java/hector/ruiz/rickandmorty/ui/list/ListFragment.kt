@@ -9,7 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import dagger.hilt.android.AndroidEntryPoint
-import hector.ruiz.presentation.ListViewModel
+import hector.ruiz.presentation.list.ListViewModel
 import hector.ruiz.rickandmorty.R
 import hector.ruiz.rickandmorty.databinding.CharacterListBinding
 import hector.ruiz.rickandmorty.extensions.snackBarIndefinite

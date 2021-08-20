@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+    <dimen name="margin_parent">8dp</dimen>
+    <dimen name="margin_info_text">16dp</dimen>
+    <dimen name="padding_info_text">16dp</dimen>
+
     <!-- Character item -->
-    <dimen name="margin_card_view">8dp</dimen>
     <dimen name="height_character_image">194dp</dimen>
-    <dimen name="margin_card_view_elements_short">8dp</dimen>
-    <dimen name="margin_card_view_elements_long">16dp</dimen>
-    <dimen name="padding_card_view_text">16dp</dimen>
 
 </resources>

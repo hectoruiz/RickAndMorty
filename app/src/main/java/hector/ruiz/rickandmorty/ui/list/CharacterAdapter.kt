@@ -47,6 +47,7 @@ class CharacterAdapter : RecyclerView.Adapter<CharacterAdapter.CharacterViewHold
                         R.string.character_episodes,
                         getQuantityEpisodes(results?.episode?.size)
                     )
+                this.characterLocation.visibility = hasCorrectLocationUrl(results?.location?.url)
             }
         }
 
@@ -71,6 +72,9 @@ class CharacterAdapter : RecyclerView.Adapter<CharacterAdapter.CharacterViewHold
                 quantityEpisodes, quantityEpisodes
             )
         }
+
+        private fun hasCorrectLocationUrl(locationUrl: String?) =
+            if (locationUrl.isNullOrBlank()) GONE else VISIBLE
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CharacterViewHolder {

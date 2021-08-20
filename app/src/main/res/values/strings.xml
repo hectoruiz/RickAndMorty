@@ -3,7 +3,6 @@
     <string name="app_name">Rick and Morty</string>
 
     <!-- Strings used for fragments for navigation -->
-    <string name="hello_detail_fragment">Hello detail fragment</string>
 
     <!-- Character list -->
     <string name="error_request">The request could not be done. Try again later.</string>
@@ -17,6 +16,7 @@
     <string name="last_location">Last know location</string>
 
     <!-- Location detail -->
+    <string name="location_description">%1s — %2s</string>
     <string name="location_residents">This location has %s</string>
     <plurals name="number_residents">
         <item quantity="one">%d resident.</item>

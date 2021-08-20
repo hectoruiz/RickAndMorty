@@ -1,4 +1,4 @@
-package hector.ruiz.presentation
+package hector.ruiz.presentation.list
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
