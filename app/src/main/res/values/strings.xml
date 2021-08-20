@@ -5,6 +5,9 @@
     <!-- Strings used for fragments for navigation -->
     <string name="hello_detail_fragment">Hello detail fragment</string>
 
+    <!-- Character list -->
+    <string name="error_request">The request could not be done. Try again later.</string>
+
     <!-- Character item -->
     <string name="character_episodes">This character appear in %s</string>
     <plurals name="number_episodes">
@@ -12,5 +15,6 @@
         <item quantity="other">%d episodes.</item>
     </plurals>
     <string name="last_location">Last know location</string>
+
 
 </resources>

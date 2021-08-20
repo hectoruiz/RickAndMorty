@@ -7,7 +7,7 @@ import javax.inject.Inject
 
 class GetLocationDetailsUseCase @Inject constructor(private val characterRepository: CharacterRepository) {
 
-    suspend fun getLocationDetails(locationId: Int): ResponseResult<LocationDetails> {
+    suspend operator fun invoke(locationId: Int): ResponseResult<LocationDetails> {
         return characterRepository.getLocation(locationId)
     }
 }

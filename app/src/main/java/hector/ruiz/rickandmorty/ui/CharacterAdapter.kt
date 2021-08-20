@@ -11,10 +11,16 @@ import hector.ruiz.domain.entities.list.Results
 import hector.ruiz.rickandmorty.R
 import hector.ruiz.rickandmorty.databinding.CharacterItemBinding
 
-class CharacterAdapter(private val characters: List<Results?>) :
-    RecyclerView.Adapter<CharacterAdapter.CharacterViewHolder>() {
+class CharacterAdapter : RecyclerView.Adapter<CharacterAdapter.CharacterViewHolder>() {
 
     var onItemClick: ((String?) -> Unit)? = null
+    private var characters: List<Results?> = emptyList()
+
+    fun setList(characters: List<Results?>?) {
+        characters?.let {
+            this.characters = it
+        }
+    }
 
     inner class CharacterViewHolder(private val view: View) : RecyclerView.ViewHolder(view) {
         private val binding = CharacterItemBinding.bind(view)

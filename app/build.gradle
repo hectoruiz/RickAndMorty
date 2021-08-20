@@ -46,6 +46,7 @@ dependencies {
     implementation project(':datasource')
     implementation project(':domain')
     implementation project(':commons')
+    implementation project(':presentation')
 
     // Android Libraries
     implementation "androidx.core:core-ktx:$rootProject.coreKtxVersion"
@@ -54,6 +55,7 @@ dependencies {
     implementation "androidx.constraintlayout:constraintlayout:$rootProject.constraintLayoutVersion"
     implementation "androidx.navigation:navigation-fragment-ktx:$rootProject.navigationVersion"
     implementation "androidx.navigation:navigation-ui-ktx:$rootProject.navigationVersion"
+    implementation "androidx.fragment:fragment-ktx:$rootProject.extensionsVersion"
 
     // Retrofit
     implementation "com.squareup.retrofit2:retrofit:$rootProject.retrofitVersion"
