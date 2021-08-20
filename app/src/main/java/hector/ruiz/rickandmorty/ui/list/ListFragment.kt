@@ -1,7 +1,6 @@
 package hector.ruiz.rickandmorty.ui.list
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -40,9 +39,9 @@ class ListFragment : Fragment() {
         binding?.charactersList?.adapter = characterAdapter
         characterAdapter.onItemClick = {
             it?.let {
-                Log.d("LOCATION_URL", it)
+                val action = ListFragmentDirections.actionListFragmentToDetailFragment(it)
+                findNavController().navigate(action)
             }
-            findNavController().navigate(R.id.action_ListFragment_to_DetailFragment)
         }
     }
 

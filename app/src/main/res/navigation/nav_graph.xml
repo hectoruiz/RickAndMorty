@@ -20,6 +20,10 @@
         android:name="hector.ruiz.rickandmorty.ui.detail.DetailFragment"
         tools:layout="@layout/detail_fragment">
 
+        <argument
+            android:name="locationUrl"
+            app:argType="string" />
+
         <action
             android:id="@+id/action_DetailFragment_to_ListFragment"
             app:destination="@id/ListFragment" />
