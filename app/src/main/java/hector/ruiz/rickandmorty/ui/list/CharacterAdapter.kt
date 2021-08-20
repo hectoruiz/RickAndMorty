@@ -1,4 +1,4 @@
-package hector.ruiz.rickandmorty.ui
+package hector.ruiz.rickandmorty.ui.list
 
 import android.view.LayoutInflater
 import android.view.View

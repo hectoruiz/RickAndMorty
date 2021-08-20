@@ -16,5 +16,12 @@
     </plurals>
     <string name="last_location">Last know location</string>
 
+    <!-- Location detail -->
+    <string name="location_residents">This location has %s</string>
+    <plurals name="number_residents">
+        <item quantity="one">%d resident.</item>
+        <item quantity="other">%d residents.</item>
+    </plurals>
+    <string name="all_residents">See all the residents</string>
 
 </resources>

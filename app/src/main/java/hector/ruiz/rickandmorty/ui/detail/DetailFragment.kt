@@ -1,13 +1,14 @@
-package hector.ruiz.rickandmorty.ui
+package hector.ruiz.rickandmorty.ui.detail
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.DialogFragment
 import hector.ruiz.rickandmorty.databinding.DetailFragmentBinding
 
-class DetailFragment : Fragment() {
+class DetailFragment : DialogFragment() {
 
     private var _binding: DetailFragmentBinding? = null
 
