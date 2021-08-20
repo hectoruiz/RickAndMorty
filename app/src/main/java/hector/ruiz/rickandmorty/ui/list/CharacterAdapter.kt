@@ -13,7 +13,7 @@ import hector.ruiz.rickandmorty.databinding.CharacterItemBinding
 
 class CharacterAdapter : RecyclerView.Adapter<CharacterAdapter.CharacterViewHolder>() {
 
-    var onItemClick: ((String?) -> Unit)? = null
+    var onLocationClick: ((String?) -> Unit)? = null
     private var characters: List<Results?> = emptyList()
 
     fun setList(characters: List<Results?>?) {
@@ -27,7 +27,7 @@ class CharacterAdapter : RecyclerView.Adapter<CharacterAdapter.CharacterViewHold
 
         init {
             binding.characterLocation.setOnClickListener {
-                onItemClick?.invoke(characters[adapterPosition]?.location?.url)
+                onLocationClick?.invoke(characters[adapterPosition]?.location?.url)
             }
         }
 

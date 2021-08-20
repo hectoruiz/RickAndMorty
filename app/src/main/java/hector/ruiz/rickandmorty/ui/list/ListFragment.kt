@@ -37,7 +37,7 @@ class ListFragment : Fragment() {
     private fun initRecyclerView() {
         characterAdapter = CharacterAdapter()
         binding?.charactersList?.adapter = characterAdapter
-        characterAdapter.onItemClick = {
+        characterAdapter.onLocationClick = {
             it?.let {
                 val action = ListFragmentDirections.actionListFragmentToDetailFragment(it)
                 findNavController().navigate(action)

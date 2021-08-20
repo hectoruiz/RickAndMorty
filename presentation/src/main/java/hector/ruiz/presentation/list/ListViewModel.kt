@@ -6,14 +6,19 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
 import hector.ruiz.domain.entities.list.Results
+import hector.ruiz.usecase.usecases.AddFavoriteUseCase
 import hector.ruiz.usecase.usecases.GetCharactersUseCase
+import hector.ruiz.usecase.usecases.RemoveFavoriteUseCase
 import kotlinx.coroutines.CoroutineExceptionHandler
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class ListViewModel @Inject constructor(private val getCharactersUseCase: GetCharactersUseCase) :
-    ViewModel() {
+class ListViewModel @Inject constructor(
+    private val getCharactersUseCase: GetCharactersUseCase,
+    private val addFavoriteUseCase: AddFavoriteUseCase,
+    private val removeFavoriteUseCase: RemoveFavoriteUseCase,
+) : ViewModel() {
 
     private val exceptionHandler = CoroutineExceptionHandler { _, throwable ->
         throwable.printStackTrace()
@@ -28,6 +33,10 @@ class ListViewModel @Inject constructor(private val getCharactersUseCase: GetCha
     val characterList: LiveData<List<Results?>>
         get() = _characterList
 
+    private val _favoriteResult: MutableLiveData<FavoriteResult> = MutableLiveData()
+    val favoriteResult: LiveData<FavoriteResult>
+        get() = _favoriteResult
+
     private val _errorRequest: MutableLiveData<Boolean> = MutableLiveData()
     val errorRequest: LiveData<Boolean>
         get() = _errorRequest
@@ -41,10 +50,34 @@ class ListViewModel @Inject constructor(private val getCharactersUseCase: GetCha
         } ?: manageError()
     }
 
+    fun addFavorite(characterId: Int) = viewModelScope.launch(exceptionHandler) {
+        val result = addFavoriteUseCase(characterId)
+        if (result) {
+            manageResultFavorite(FavoriteResult.ADD_SUCCESS)
+        } else manageResultFavorite(FavoriteResult.ERROR)
+    }
+
+    fun removeFavorite(characterId: Int) = viewModelScope.launch(exceptionHandler) {
+        val result = removeFavoriteUseCase(characterId)
+        if (result) {
+            manageResultFavorite(FavoriteResult.REMOVE_SUCCESS)
+        } else manageResultFavorite(FavoriteResult.ERROR)
+    }
+
+    private fun manageResultFavorite(favoriteResult: FavoriteResult) {
+        _favoriteResult.postValue(favoriteResult)
+    }
+
     private fun manageError() {
         _isLoading.postValue(false)
         if (_characterList.value.isNullOrEmpty()) {
             _errorRequest.postValue(true)
         }
+    }
+
+    enum class FavoriteResult {
+        ADD_SUCCESS,
+        REMOVE_SUCCESS,
+        ERROR
     }
 }

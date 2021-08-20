@@ -1,13 +1,15 @@
 package hector.ruiz.datasource.datasources
 
-import android.content.SharedPreferences
 import hector.ruiz.data.datasources.MemoryDataSource
+import hector.ruiz.datasource.sharedpreferences.ApiPreferences
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
-class MemoryDataSourceImpl @Inject constructor(private val sharedPreferences: SharedPreferences) :
+class MemoryDataSourceImpl @Inject constructor(apiPreferences: ApiPreferences) :
     MemoryDataSource {
+
+    private val sharedPreferences = apiPreferences.sharedPreferences
 
     override suspend fun addFavorite(idCharacter: Int): Boolean {
         return withContext(Dispatchers.IO) {

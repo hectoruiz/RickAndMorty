@@ -2,11 +2,11 @@ package hector.ruiz.datasource.sharedpreferences
 
 import android.content.Context
 import android.content.SharedPreferences
-import dagger.hilt.android.qualifiers.ActivityContext
+import dagger.hilt.android.qualifiers.ApplicationContext
 import javax.inject.Inject
 
 class ApiPreferences @Inject constructor(
-    @ActivityContext context: Context
+    @ApplicationContext context: Context
 ) {
     private val sharedPreferencesName = context.packageName + NAME
     val sharedPreferences: SharedPreferences =
