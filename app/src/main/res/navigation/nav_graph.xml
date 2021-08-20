@@ -18,7 +18,7 @@
     <fragment
         android:id="@+id/DetailFragment"
         android:name="hector.ruiz.rickandmorty.ui.detail.DetailFragment"
-        tools:layout="@layout/detail_fragment">
+        tools:layout="@layout/location_fragment">
 
         <argument
             android:name="locationUrl"
